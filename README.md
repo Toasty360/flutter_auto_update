@@ -1,39 +1,35 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Autoupdate
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+A Flutter package to automatically check for updates and install them. The package uses GitHub releases to determine if an update is available.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
+## Andriod
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+You need to request permission for READ_EXTERNAL_STORAGE to read the apk file. You can handle the storage permission using flutter_permission_handler.
 
-## Features
+```xml
+ <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+```
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+In Android version >= 8.0 , You need to request permission for REQUEST_INSTALL_PACKAGES to install the apk file
 
-## Getting started
+```xml
+<uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+```
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+In Android version <= 6.0 , You need to request permission for WRITE_EXTERNAL_STORAGE to copy the apk from the app private location to the download directory
+
+```xml
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
 ```dart
-const like = 'sample';
+final updater = SimpleAutoUpdater(
+  context: context,
+  githubRepo: 'yourusername/yourrepo',
+  apkFileName: 'your_app.apk',
+);
+
+await updater.checkAndUpdate();
 ```
-
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
