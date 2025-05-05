@@ -1,0 +1,23 @@
+name: autoupdate
+description: "Flutter package to automatically update your app using GitHub releases."
+version: 0.0.1
+
+environment:
+  sdk: ^3.7.0-154.0.dev
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  dio: ^5.3.3
+  install_plugin: ^2.1.0
+  package_info_plus: ^5.0.1
+  permission_handler: ^11.0.0
+  path_provider: ^2.1.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
