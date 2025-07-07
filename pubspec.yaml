@@ -1,5 +1,5 @@
 name: autoupdate
-description: "Flutter package to automatically update your app using GitHub releases."
+description: "A comprehensive Flutter package for automatically updating your app using GitHub releases, without relying on Google Play Store."
 version: 0.0.1
 
 environment:
@@ -21,3 +21,8 @@ dev_dependencies:
   flutter_lints: ^5.0.0
 
 flutter:
+
+# Example app
+example:
+  flutter:
+    uses-material-design: true
