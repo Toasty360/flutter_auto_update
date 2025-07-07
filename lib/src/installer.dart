@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:open_file/open_file.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class InstallResult {
   final bool success;
@@ -16,6 +17,18 @@ class ApkInstaller {
         success: false,
         error: 'Auto-update only supported on Android',
       );
+    }
+
+    // Request install permission at runtime
+    final status = await Permission.requestInstallPackages.status;
+    if (!status.isGranted) {
+      final result = await Permission.requestInstallPackages.request();
+      if (!result.isGranted) {
+        return InstallResult(
+          success: false,
+          error: 'Install permission denied',
+        );
+      }
     }
 
     try {
